@@ -1,9 +1,18 @@
+package model;
+
 public class Nurse extends MedicalStaff {
 
     private int patientsAssigned;
 
     public Nurse(int staffId, String name, double salary, int experienceYears, int patientsAssigned) {
         super(staffId, name, salary, experienceYears);
+        setPatientsAssigned(patientsAssigned);
+    }
+
+    public void setPatientsAssigned(int patientsAssigned) {
+        if(patientsAssigned < 0) {
+            throw new IllegalArgumentException("Patient assigned cannot be negative");
+        }
         this.patientsAssigned = patientsAssigned;
     }
 

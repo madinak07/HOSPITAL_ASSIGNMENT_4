@@ -1,12 +1,20 @@
+package model;
+
 public class Doctor extends MedicalStaff {
 
     private String specialization;
 
     public Doctor(int staffId, String name, double salary, int experienceYears, String specialization) {
         super(staffId, name, salary, experienceYears); // MUST be first
-        this.specialization = specialization;
+        setSpecialization(specialization);
     }
 
+    public void setSpecialization(String specialization) {
+        if(specialization==null || specialization.trim().isEmpty()) {
+            throw new IllegalArgumentException("Specialization cannot be empty");
+        }
+        this.specialization = specialization;
+    }
     public String getSpecialization() {
         return specialization;
     }
