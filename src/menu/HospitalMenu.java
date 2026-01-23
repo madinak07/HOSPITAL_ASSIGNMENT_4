@@ -65,27 +65,26 @@ public class HospitalMenu implements Menu {
 
     private void addDoctor() {
         try {
-            System.out.print("ID: ");
+            System.out.println("id");
             int id = scanner.nextInt();
             scanner.nextLine();
 
-            System.out.print("Name: ");
+            System.out.println("name");
             String name = scanner.nextLine();
 
-            System.out.print("Salary: ");
+            System.out.println("salary");
             double salary = scanner.nextDouble();
 
-            System.out.print("Experience years: ");
+            System.out.println("exp");
             int exp = scanner.nextInt();
-            scanner.nextLine();
 
-            System.out.print("Specialization: ");
+            System.out.println("specialization");
             String spec = scanner.nextLine();
 
             MedicalStaff doctor = new Doctor(id, name, salary, exp, spec);
             allStaff.add(doctor);
-            System.out.println("Doctor added!");
-        }catch (IllegalArgumentException e){
+            System.out.println("doctor added");
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -110,7 +109,7 @@ public class HospitalMenu implements Menu {
 
             MedicalStaff nurse = new Nurse(id, name, salary, exp, patients);
             allStaff.add(nurse);
-            System.out.println("model.Nurse added!");
+            System.out.println("Nurse added!");
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
@@ -118,14 +117,14 @@ public class HospitalMenu implements Menu {
 
 
     private void staffWork() {
-        System.out.println("\n--- Staff work ---");
-        for (MedicalStaff m : allStaff) {
+        for(MedicalStaff m : allStaff) {
             m.work();
         }
     }
 
+
     private void viewDoctors() {
-        System.out.println("\n--- DOCTORS ONLY ---");
+        System.out.println("");
         for (MedicalStaff m : allStaff) {
             if (m instanceof Doctor d) {
                 System.out.println(d);
@@ -134,7 +133,7 @@ public class HospitalMenu implements Menu {
     }
 
     private void viewNurses() {
-        System.out.println("\"\\n--- NURSES ONLY ---\"");
+        System.out.println("\n--- NURSES ONLY ---");
         for (MedicalStaff m : allStaff) {
             if (m instanceof Nurse n) {
                 System.out.println(n);
