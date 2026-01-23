@@ -6,14 +6,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HospitalMenu implements Menu {
-    private ArrayList<MedicalStaff>allStaff;
+    private ArrayList<MedicalStaff> allStaff;
     private Scanner scanner;
 
-    public HospitalMenu(){
-        this.allStaff=new ArrayList<>();
-        this.scanner=new Scanner(System.in);
+    public HospitalMenu() {
+        this.allStaff = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
 
-
+        try {
+            allStaff.add(new Doctor(3, "Madina", 850000, 8, "cardiosurgion"));
+            allStaff.add(new Nurse(3, "Tolganayi", 360000, 1, 2));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error initializing test data: " + e.getMessage());
+        }
     }
     @Override
     public void displayMenu(){
@@ -31,9 +36,11 @@ public class HospitalMenu implements Menu {
     @Override
     public void run() {
         boolean running = true;
+
         while(running) {
             displayMenu();
             System.out.println("Enter choice: ");
+
             try {
                 int choice = scanner.nextInt();
                 scanner.nextLine();
@@ -55,10 +62,6 @@ public class HospitalMenu implements Menu {
         }
         scanner.close();
     }
-
-    // ===== MENU METHODS =====
-
-
 
     private void addDoctor() {
         try {
@@ -131,7 +134,7 @@ public class HospitalMenu implements Menu {
     }
 
     private void viewNurses() {
-        System.out.println("\n--- NURSES ONLY ---");
+        System.out.println("\"\\n--- NURSES ONLY ---\"");
         for (MedicalStaff m : allStaff) {
             if (m instanceof Nurse n) {
                 System.out.println(n);
