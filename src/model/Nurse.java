@@ -39,6 +39,16 @@ public class Nurse extends MedicalStaff {
     }
 
     @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Role: Nurse");
+        System.out.println("Doctor assisted: " + assistDoctor(););
+        if (isHeadNurse()) {
+            System.out.println("TOP NURSE");
+        }
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " | Patients Assigned: " + patientsAssigned;
     }

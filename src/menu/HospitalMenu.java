@@ -1,5 +1,6 @@
 package menu;
 
+import database.StaffDAO;
 import model.*;
 
 import java.util.ArrayList;
@@ -140,5 +141,39 @@ public class HospitalMenu implements Menu {
             }
         }
     }
+
+    private void updateDoctor() {
+        System.out.print("Enter Doctor ID to update: ");
+        int doctorId = scanner.nextInt();
+        scanner.nextLine();
+        // 1. Load current data from database
+        Doctor existingDoctor = StaffDAO.getDoctorById(doctorId);
+        if (existingDoctor == null) {
+            System.out.println(" No doctor found with ID: " + doctorId);
+            return;
+        }
+
+        // 2. Display current info
+        System.out.println("Current Info:");
+        System.out.println(existingDoctor.toString());
+
+        // 3. Get new values (press Enter to keep current)
+        System.out.print("New Name [" + existingDoctor.getName() + "]: ");
+        String newName = scanner.nextLine();
+        if (newName.trim().isEmpty()) {
+            newName = existingDoctor.getName(); // Keep current
+        }
+        System.out.print("New Salary [" + existingDoctor.getSalary() + "]: ");
+        String salaryInput = scanner.nextLine();
+        double newSalary = salaryInput.trim().isEmpty() ?
+                existingDoctor.getSalary() :
+                Double.parseDouble(salaryInput);
+        // 4. Update based on type
+        if (existingDoctor instanceof Doctor) {
+            Doctor updatedChef = new Doctor(doctorId, newName, newSalary,);
+            StaffDAO.updateDoctor(updatedDoctor);
+        }
+    }
+
 }
 

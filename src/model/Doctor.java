@@ -38,6 +38,16 @@ public class Doctor extends MedicalStaff {
     }
 
     @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Role: Doctor");
+        System.out.println("Specialization: " + specialization);
+        if (isSeniorDoctor()) {
+            System.out.println("⭐ SENIOR DOCTOR");
+        }
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " | Specialization: " + specialization;
     }
