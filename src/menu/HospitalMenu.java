@@ -2,7 +2,6 @@ package menu;
 
 import database.*;
 import model.*;
-import Exception.InvalidInputException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +13,6 @@ public class HospitalMenu implements Menu {
         this.scanner = new Scanner(System.in);
         this.staffDAO = new StaffDAO();
     }
-
 
     @Override
     public void displayMenu(){
@@ -131,11 +129,9 @@ public class HospitalMenu implements Menu {
         }
     }
 
-
     private void viewAllStaff() {
             staffDAO.displayAllStaff();
     }
-
 
     private void viewDoctors() {
         List<Doctor> doctors = staffDAO.getAllDoctors();
