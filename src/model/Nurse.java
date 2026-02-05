@@ -30,8 +30,9 @@ public class Nurse extends MedicalStaff {
         return "Nurse";
     }
 
-    public void assistDoctor() {
-        System.out.println("Nurse " + name + " is assisting a doctor.");
+    public String assistDoctor() {
+        return "Nurse " + name + " is assisting a doctor.";
+
     }
 
     public boolean isHeadNurse() {
@@ -42,7 +43,7 @@ public class Nurse extends MedicalStaff {
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Role: Nurse");
-        System.out.println("Doctor assisted: " + assistDoctor(););
+        System.out.println("Doctor assisted: " + assistDoctor());
         if (isHeadNurse()) {
             System.out.println("TOP NURSE");
         }
